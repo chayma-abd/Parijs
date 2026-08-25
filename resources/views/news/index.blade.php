@@ -8,7 +8,9 @@
 
     @foreach($news as $item)
         <div>
-            <h2>{{ $item->title }}</h2>
+            <a href="{{ route('news.show', $item->id) }}">
+                <h2>{{ $item->title }}</h2>
+            </a>
             <p>Gepubliceerd op: {{ $item->published_date }}</p>
             <p>{{ Str::limit($item->content, 100) }}</p>
         </div>
