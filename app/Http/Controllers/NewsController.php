@@ -12,4 +12,10 @@ class NewsController extends Controller
         $news = News::all();
         return view('news.index', compact('news'));
     }
+
+    public function show($id)
+    {
+        $news = News::findOrFail($id);
+        return view('news.show', compact('news'));
+    }
 }
