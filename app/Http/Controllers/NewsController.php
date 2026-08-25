@@ -18,4 +18,20 @@ class NewsController extends Controller
         $news = News::findOrFail($id);
         return view('news.show', compact('news'));
     }
+
+    public function create()
+    {
+        return view('news.create');
+    }
+
+    public function store(Request $request)
+    {
+        $news = new News();
+        $news->title = $request->title;
+        $news->content = $request->content;
+        $news->published_date = $request->published_date;
+        $news->save();
+
+        return redirect()->route('news.index');
+    }
 }

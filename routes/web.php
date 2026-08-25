@@ -18,5 +18,7 @@ Route::put('/profile/{id}', [ProfileController::class, 'update'])->name('profile
 
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
+Route::get('/news/create', [App\Http\Controllers\NewsController::class, 'create'])->name('news.create');
+Route::post('/news', [App\Http\Controllers\NewsController::class, 'store'])->name('news.store');
 
 require __DIR__.'/auth.php';
