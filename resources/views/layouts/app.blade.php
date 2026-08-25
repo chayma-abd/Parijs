@@ -7,31 +7,43 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet"/>
-
-    <!-- Tailwind CSS & Alpine.js via CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.1/dist/cdn.min.js"></script>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="font-sans antialiased">
-<div class="min-h-screen bg-gray-100">
-    @include('layouts.app_navigation')
+    <div class="min-h-screen bg-gray-100">
+        <!-- Navigatie -->
+        <nav class="bg-white border-b border-gray-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16">
+                    <div class="flex items-center">
+                        <a href="{{ route('dashboard') }}" class="text-xl font-bold text-gray-800">
+                            Parijs Website
+                        </a>
+                    </div>
 
-    <!-- Page Heading -->
-    @isset($header)
-        <header class="bg-white shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                {{ $header }}
+                    <div class="flex items-center space-x-4">
+                        <a href="{{ route('news.index') }}" class="text-gray-700 hover:text-gray-900">Nieuws</a>
+
+                        @auth
+                            <a href="{{ route('profile.show', auth()->user()->id) }}" class="text-gray-700 hover:text-gray-900">Mijn profiel</a>
+                            <form action="{{ route('logout') }}" method="POST" class="inline">
+                                @csrf
+                                <button type="submit" class="text-gray-700 hover:text-gray-900">Uitloggen</button>
+                            </form>
+                        @else
+                            <a href="{{ route('login') }}" class="text-gray-700 hover:text-gray-900">Inloggen</a>
+                            <a href="{{ route('register') }}" class="text-gray-700 hover:text-gray-900">Registreren</a>
+                        @endauth
+                    </div>
+                </div>
             </div>
-        </header>
-    @endisset
+        </nav>
 
-    <!-- Page Content -->
-    <main>
-        {{ $slot }}
-    </main>
-</div>
+        <!-- Page Content -->
+        <main>
+            @yield('content')
+        </main>
+    </div>
 </body>
 </html>
