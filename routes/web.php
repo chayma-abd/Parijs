@@ -20,6 +20,7 @@ Route::get('/profile/{id}', [App\Http\Controllers\ProfileController::class, 'sho
 Route::get('/profile/{id}/edit', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
 Route::put('/profile/{id}', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 Route::get('/news', [App\Http\Controllers\NewsController::class, 'index'])->name('news.index');
+Route::get('/news/{id}', [App\Http\Controllers\NewsController::class, 'show'])->name('news.show');
 
 require __DIR__.'/auth.php';
 
