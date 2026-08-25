@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use Illuminate\ Database\Seeder;
+use Illuminate\Database\Seeder;
 use App\Models\News;
 
 class NewsSeeder extends Seeder
-
+{
     public function run(): void
     {
         News::create([
@@ -21,3 +21,4 @@ class NewsSeeder extends Seeder
             'published_date' => '2026-08-24',
         ]);
     }
+}
