@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\NewsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -10,17 +12,11 @@ Route::get('/dashboard', function () {
     return view('userzone.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [App\Http\Controllers\Userzone\ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [App\Http\Controllers\Userzone\ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [App\Http\Controllers\Userzone\ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-// Profiel routes
-Route::get('/profile/{id}', [App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
-Route::get('/profile/{id}/edit', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
-Route::put('/profile/{id}', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
-Route::get('/news', [App\Http\Controllers\NewsController::class, 'index'])->name('news.index');
-Route::get('/news/{id}', [App\Http\Controllers\NewsController::class, 'show'])->name('news.show');
+Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');
+Route::get('/profile/{id}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::put('/profile/{id}', [ProfileController::class, 'update'])->name('profile.update');
+
+Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
 
 require __DIR__.'/auth.php';
-
