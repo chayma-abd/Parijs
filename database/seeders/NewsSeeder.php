@@ -2,16 +2,22 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
+use Illuminate\ Database\Seeder;
+use App\Models\News;
 
 class NewsSeeder extends Seeder
-{
-    /**
-     * Run the database seeds.
-     */
+
     public function run(): void
     {
-        //
+        News::create([
+            'title' => 'Eerste nieuwsitem',
+            'content' => 'Dit is de inhoud van het eerste nieuwsitem. Welkom op onze website over Parijs!',
+            'published_date' => '2026-08-25',
+        ]);
+
+        News::create([
+            'title' => 'Tweede nieuwsitem',
+            'content' => 'Dit is de inhoud van het tweede nieuwsitem. Veel plezier op onze website!',
+            'published_date' => '2026-08-24',
+        ]);
     }
-}
