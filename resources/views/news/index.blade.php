@@ -24,6 +24,11 @@
                         @auth
                             @if(auth()->user()->email === 'admin@ehb.be')
                                 <a href="{{ route('news.edit', $item->id) }}" class="text-blue-600 hover:underline ml-2">Bewerken</a>
+                                <form action="{{ route('news.destroy', $item->id) }}" method="POST" class="inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-red-600 hover:underline ml-2" onclick="return confirm('Weet je zeker dat je dit nieuwsitem wilt verwijderen?')">Verwijderen</button>
+                                </form>
                             @endif
                         @endauth
                     </div>
