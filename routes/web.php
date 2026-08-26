@@ -3,9 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('/dashboard', function () {
@@ -23,10 +26,14 @@ Route::post('/news', [NewsController::class, 'store'])->name('news.store');
 Route::get('/news/{id}/edit', [NewsController::class, 'edit'])->name('news.edit');
 Route::put('/news/{id}', [NewsController::class, 'update'])->name('news.update');
 Route::delete('/news/{id}', [NewsController::class, 'destroy'])->name('news.destroy');
-Route::get('/admin/users', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.users');
-Route::post('/admin/make/{id}', [App\Http\Controllers\AdminController::class, 'makeAdmin'])->name('admin.make');
-Route::post('/admin/remove/{id}', [App\Http\Controllers\AdminController::class, 'removeAdmin'])->name('admin.remove');
-Route::get('/faq', [App\Http\Controllers\FaqController::class, 'index'])->name('faq.index');
-Route::get('/contact', [App\Http\Controllers\ContactController::class, 'show'])->name('contact.show');
-Route::post('/contact', [App\Http\Controllers\ContactController::class, 'send'])->name('contact.send');
+
+Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
+
+Route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+
+Route::get('/admin/users', [AdminController::class, 'index'])->name('admin.users');
+Route::post('/admin/make/{id}', [AdminController::class, 'makeAdmin'])->name('admin.make');
+Route::post('/admin/remove/{id}', [AdminController::class, 'removeAdmin'])->name('admin.remove');
+
 require __DIR__.'/auth.php';
