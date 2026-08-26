@@ -1,21 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Nieuws</title>
-</head>
-<body>
-    <h1>Nieuws overzicht</h1>
+@extends('layouts.app')
 
-    @foreach($news as $item)
-        <div>
-            <a href="{{ route('news.show', $item->id) }}">
-                <h2>{{ $item->title }}</h2>
-            </a>
-            <p>Gepubliceerd op: {{ $item->published_date }}</p>
-            <p>{{ Str::limit($item->content, 100) }}</p>
+@section('content')
+<div class="py-12">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="p-6 text-gray-900">
+                <h1 class="text-2xl font-bold mb-6">Nieuws overzicht</h1>
+
+                @auth
+                    @if(auth()->user()->email === 'admin@ehb.be')
+                        <a href="{{ route('news.create') }}" class="inline-block mb-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">+ Nieuws toevoegen</a>
+                    @endif
+                @endauth
+
+                @foreach($news as $item)
+                    <div class="mb-4 p-4 border rounded">
+                        <a href="{{ route('news.show', $item->id) }}" class="text-xl font-semibold text-blue-600 hover:underline">
+                            {{ $item->title }}
+                        </a>
+                        <p class="text-sm text-gray-500">Gepubliceerd op: {{ $item->published_date }}</p>
+                        <p class="mt-2">{{ Str::limit($item->content, 100) }}</p>
+                    </div>
+                @endforeach
+            </div>
         </div>
-    @endforeach
-
-    <a href="/">Terug naar home</a>
-</body>
-</html>
+    </div>
+</div>
+@endsection
