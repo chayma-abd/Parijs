@@ -20,6 +20,12 @@
                         </a>
                         <p class="text-sm text-gray-500">Gepubliceerd op: {{ $item->published_date }}</p>
                         <p class="mt-2">{{ Str::limit($item->content, 100) }}</p>
+
+                        @auth
+                            @if(auth()->user()->email === 'admin@ehb.be')
+                                <a href="{{ route('news.edit', $item->id) }}" class="text-blue-600 hover:underline ml-2">Bewerken</a>
+                            @endif
+                        @endauth
                     </div>
                 @endforeach
             </div>
