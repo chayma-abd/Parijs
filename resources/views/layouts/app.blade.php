@@ -18,7 +18,7 @@
                         </a>
                     </div>
                     <div class="flex items-center space-x-4">
-                        <a href="{{ route('news.index') }}" class="text-gray-700 hover:text-gray-900">Nieuws</a>
+                        <a href="{{ route('attractions.index') }}" class="text-gray-700 hover:text-gray-900">Bezienswaardigheden</a>
                         <a href="{{ route('faq.index') }}" class="text-gray-700 hover:text-gray-900">FAQ</a>
                         <a href="{{ route('contact.show') }}" class="text-gray-700 hover:text-gray-900">Contact</a>
                         @auth
