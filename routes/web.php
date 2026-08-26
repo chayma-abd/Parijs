@@ -26,5 +26,6 @@ Route::delete('/news/{id}', [NewsController::class, 'destroy'])->name('news.dest
 Route::get('/admin/users', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.users');
 Route::post('/admin/make/{id}', [App\Http\Controllers\AdminController::class, 'makeAdmin'])->name('admin.make');
 Route::post('/admin/remove/{id}', [App\Http\Controllers\AdminController::class, 'removeAdmin'])->name('admin.remove');
+Route::get('/faq', [App\Http\Controllers\FaqController::class, 'index'])->name('faq.index');
 
 require __DIR__.'/auth.php';
