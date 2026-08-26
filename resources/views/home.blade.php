@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="relative">
-    <div class="bg-cover bg-center h-[500px] flex items-center justify-center" style="background-image: url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200');">
+    <div class="bg-cover bg-center h-[500px] flex items-center justify-center" style="background-image: url('{{ asset('images/Eifeltore1.jpg') }}');">
         <div class="text-center text-white bg-black bg-opacity-40 p-8 rounded-lg">
             <h1 class="text-5xl font-bold mb-4">Welkom in Parijs! 🇫🇷</h1>
             <p class="text-xl">Ontdek de mooiste stad ter wereld</p>
@@ -22,37 +22,37 @@
                 $attractions = [
                     [
                         'name' => 'Eiffeltoren',
-                        'image' => 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400',
+                        'image' => 'Eifeltore1.jpg',
                         'description' => 'Het symbool van Parijs. Beklim de 324 meter hoge toren voor een prachtig uitzicht over de stad.'
                     ],
                     [
                         'name' => 'Louvre Museum',
-                        'image' => 'https://images.unsplash.com/photo-1564915322515-8b2cceb3c8b1?w=400',
+                        'image' => 'Louvre.jpg',
                         'description' => 'Het grootste museum ter wereld met duizenden kunstwerken, waaronder de Mona Lisa.'
                     ],
                     [
                         'name' => 'Notre-Dame',
-                        'image' => 'https://images.unsplash.com/photo-1583583325395-9a017c155f79?w=400',
+                        'image' => 'notre-dame-de-paris.jpg',
                         'description' => 'De beroemde kathedraal op het Île de la Cité, een meesterwerk van gotische architectuur.'
                     ],
                     [
                         'name' => 'Arc de Triomphe',
-                        'image' => 'https://images.unsplash.com/photo-1569087366556-63f5a765bbf3?w=400',
+                        'image' => 'ArcDeTriomphe.jpg',
                         'description' => 'De triomfboog ter ere van de Franse overwinningen. Beklim de top voor een panoramisch uitzicht.'
                     ],
                     [
                         'name' => 'Sacré-Cœur',
-                        'image' => 'https://images.unsplash.com/photo-1572706629222-c0b0266f25e4?w=400',
+                        'image' => 'SacréCoeur.jpg',
                         'description' => 'De witte basiliek op de Montmartre-heuvel met een prachtig uitzicht over de stad.'
                     ],
                     [
                         'name' => 'Musée d\'Orsay',
-                        'image' => 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=400',
+                        'image' => 'museauD\'orsay.jpg',
                         'description' => 'Een museum in een voormalig treinstation met een indrukwekkende collectie impressionistische kunst.'
                     ],
                     [
                         'name' => 'Centre Pompidou',
-                        'image' => 'https://images.unsplash.com/photo-1553949331-5d8f0a84de99?w=400',
+                        'image' => 'Pompidou.jpg',
                         'description' => 'Een modern kunstmuseum met een opvallende architectuur van buitenaf, met kleurrijke leidingen.'
                     ]
                 ];
@@ -60,7 +60,7 @@
 
             @foreach($attractions as $attraction)
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="{{ $attraction['image'] }}" alt="{{ $attraction['name'] }}" class="w-full h-48 object-cover">
+                    <img src="{{ asset('images/' . $attraction['image']) }}" alt="{{ $attraction['name'] }}" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">{{ $attraction['name'] }}</h3>
                         <p class="text-gray-600">{{ $attraction['description'] }}</p>
