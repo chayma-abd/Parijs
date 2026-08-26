@@ -19,6 +19,7 @@
                     </div>
                     <div class="flex items-center space-x-4">
                         <a href="{{ route('news.index') }}" class="text-gray-700 hover:text-gray-900">Nieuws</a>
+                        <a href="{{ route('faq.index') }}" class="text-gray-700 hover:text-gray-900">FAQ</a>
                         @auth
                             @if(auth()->user()->email === 'admin@ehb.be')
                                 <a href="{{ route('admin.users') }}" class="text-gray-700 hover:text-gray-900">Admin panel</a>
