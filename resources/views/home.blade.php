@@ -67,15 +67,15 @@
     <div class="grid">
         @foreach($attractions as $attraction)
             <div class="card">
-                <img src="{{ asset('images/' . $attraction['image']) }}" alt="{{ $attraction['name'] }}">
+                <img src="{{ asset('images/' . $attraction->image) }}" alt="{{ $attraction->name }}">
                 <div class="card-body">
                     <h3>
-                        <a href="{{ route('attractions.show', $attraction['id']) }}">
-                            {{ $attraction['name'] }}
+                        <a href="{{ route('attractions.show', $attraction->id) }}">
+                            {{ $attraction->name }}
                         </a>
                     </h3>
-                    <p>{{ $attraction['description'] }}</p>
-                    <a href="{{ route('attractions.show', $attraction['id']) }}" style="color: #007bff; text-decoration: none;">Lees meer →</a>
+                    <p>{{ $attraction->description }}</p>
+                    <a href="{{ route('attractions.show', $attraction->id) }}" style="color: #007bff; text-decoration: none;">Lees meer →</a>
                 </div>
             </div>
         @endforeach
