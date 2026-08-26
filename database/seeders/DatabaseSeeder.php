@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
             NewsSeeder::class,
             CategorySeeder::class,
             FaqSeeder::class,
+            AttractionSeeder::class,
         ]);
     }
 }

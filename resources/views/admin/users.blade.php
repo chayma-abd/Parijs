@@ -7,6 +7,10 @@
             <div class="p-6 text-gray-900">
                 <h1 class="text-2xl font-bold mb-6">Gebruikers beheren</h1>
 
+                <div class="mb-4">
+                    <a href="{{ route('attractions.index') }}" style="color: #007bff; text-decoration: none;">← Bezienswaardigheden beheren</a>
+                </div>
+
                 @if(session('success'))
                     <div class="bg-green-100 text-green-700 p-4 rounded mb-4">
                         {{ session('success') }}

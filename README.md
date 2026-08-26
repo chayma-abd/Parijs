@@ -87,3 +87,118 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+Project: Toeristische website over Parijs
+1. Inleiding
+Dit project is gemaakt voor het vak Backend Web. Het is een website over Parijs voor toeristen. Bezoekers kunnen informatie vinden over bezienswaardigheden, veelgestelde vragen bekijken en een contactformulier invullen. Als admin kan ik alles beheren: bezienswaardigheden, FAQ, gebruikers en meer.
+
+De website is gebouwd met Laravel 13 en volgt de MVC-structuur zoals in de les behandeld.
+
+2. Hoe ik het project heb aangepakt
+Stap 1: Project opzetten
+Ik begon met het aanmaken van een nieuw Laravel-project via Herd met de starterpack van de docent. Daarna heb ik SQLite ingesteld als database omdat dat in de les werd aangeraden voor lokale ontwikkeling. Ik paste het .env bestand aan en voerde de migraties uit.
+
+Stap 2: Authenticatie en admin account
+Ik installeerde Breeze voor het login en registratie systeem. Daarna maakte ik een admin account aan via een seeder met de gegevens die de docent vroeg: admin@ehb.be en Password!321. Ik voegde ook een is_admin veld toe aan de users tabel zodat ik later kon controleren wie admin is.
+
+Stap 3: Profielpagina
+Ik maakte een ProfileController en voegde velden toe aan de users tabel: username, birthday, profile_picture en about_me. Ik maakte routes voor het bekijken, bewerken en bijwerken van profielen. De views maakte ik zodat gebruikers hun eigen profiel kunnen zien en aanpassen. Voor foto upload gebruikte ik de storage link zoals in de les.
+
+Stap 4: Bezienswaardigheden beheren
+Ik maakte een Attraction model en migratie voor de bezienswaardigheden tabel. Daarna maakte ik een AttractionController met alle CRUD functionaliteiten: index, show, create, store, edit, update en destroy. Alleen de admin kan bezienswaardigheden toevoegen, bewerken of verwijderen. Ik maakte ook een seeder met 7 bezienswaardigheden als testdata.
+
+Stap 5: Admin rechten
+Ik maakte een AdminController voor het beheren van gebruikers. Ik maakte een pagina waar de admin alle gebruikers kan zien en anderen admin kan maken of admin rechten kan afnemen. De hoofdadmin kan zichzelf geen rechten afnemen.
+
+Stap 6: FAQ pagina
+Ik maakte twee modellen: Category en Faq. Een category heeft meerdere faqs. Ik maakte seeders met testdata en een FaqController met een index methode. De view toont alle categorieën met bijbehorende vragen en antwoorden.
+
+Stap 7: Contact pagina
+Ik maakte een ContactController met een show en send methode. Het formulier heeft validatie voor naam, email en bericht. Bij verzending krijgt de admin een email met de inhoud. Ik gebruikte Mail::to voor het versturen.
+
+Stap 8: Layout en navigatie
+Ik paste de layout aan met een navigatiebalk met links naar alle paginas: Home, Bezienswaardigheden, FAQ, Contact, Profiel, Admin panel en Uitloggen. Ik gebruikte route() voor alle links zoals in de les.
+
+Stap 9: Styling
+Ik voegde eigen CSS toe in de views. Geen frameworks zoals Tailwind omdat de docent zei dat we geen frameworks mochten gebruiken.
+
+Stap 10: Testen
+Ik testte alle functionaliteiten: inloggen, registreren, profiel bewerken, bezienswaardigheden toevoegen, bezienswaardigheden bewerken, bezienswaardigheden verwijderen, FAQ bekijken, contact versturen en admin rechten geven.
+
+3. Gebruikte technieken uit de leerstof
+Techniek	Module	Waar gebruikt
+Blade layouts (extends, section, yield)	4.2	Alle views
+Blade directives (foreach, if, auth)	4.1, 5.3	Home, bezienswaardigheden, FAQ
+Controllers	6.2	Alle functionaliteiten
+Routes met named routes	3.7	Alle links
+Models en migraties	7.1, 7.3	Attraction, Category, Faq
+Seeders	7.4	Admin, bezienswaardigheden, FAQ
+Eloquent ORM	7.5	Database queries
+CSRF beveiliging	8.1	Alle formulieren
+Validatie	8.2	Contact, profiel, bezienswaardigheden
+File uploads	8.5	Profielfoto, bezienswaardigheden afbeeldingen
+Auth facade	5.4	Admin checks
+Middleware	5.2	Dashboard
+4. Hoe installeer je dit project
+Clone de repository
+
+Kopieer .env.example naar .env
+
+Pas de database instellingen aan in .env (SQLite of MySQL)
+
+Voer composer install uit
+
+Voer npm install en npm run build uit
+
+Genereer de app key: php artisan key:generate
+
+Voer de migraties uit: php artisan migrate
+
+Voer de seeders uit: php artisan db:seed
+
+Start de server: php artisan serve
+
+Login met admin@ehb.be en Password!321
+
+5. Admin account
+Email: admin@ehb.be
+
+Wachtwoord: Password!321
+
+6. Screenshots
+Homepagina
+De homepagina toont alle bezienswaardigheden met afbeelding, titel en beschrijving. Elke kaart heeft een Lees meer link naar de detailpagina.
+home pagina : ![alt text](image-1.png), homepagina voor bezoekers : ![alt text](image-3.png)
+Detailpagina : ![alt text](image-2.png)
+De detailpagina toont de naam, afbeelding, uitgebreide beschrijving, adres en prijs van de attractie.
+
+Profielpagina
+Gebruikers kunnen hun profiel bekijken en bewerken. Ze kunnen een username, verjaardag, profielfoto en over mij tekst toevoegen.
+
+Bezienswaardigheden overzicht
+Bezoekers kunnen alle bezienswaardigheden zien. Admin kan bezienswaardigheden toevoegen, bewerken en verwijderen.
+
+FAQ pagina
+Alle vragen zijn gegroepeerd per categorie. Bezoekers kunnen alle vragen en antwoorden lezen.
+
+Contact pagina
+Bezoekers kunnen een bericht sturen met naam, email en bericht. Admin krijgt een email.
+
+Admin panel
+Admin kan alle gebruikers zien en anderen admin maken of admin rechten afnemen.
+
+7. Mijn commits
+Ik heb regelmatig commits gedaan tijdens het bouwen van het project. Elke functionaliteit kreeg een aparte commit met een duidelijke beschrijving. Zo kan de docent zien hoe ik stap voor stap heb gewerkt. De code is volledig door mijzelf geschreven op basis van de leerstof. Om mijn bouwritme goed te houden en te zorgen dat ik gestructureerd te werk ging, heb ik DeepSeek gebruikt voor uitleg bij bepaalde concepten en hulp bij foutmeldingen. De code zelf heb ik echter altijd zelf geschreven.
+
+8. Bronnen
+Laravel documentatie (laravel.com/docs)
+
+De leerstof van de docent (modules 1 tot 8)
+
+DeepSeek (AI assistent) voor uitleg bij de leerstof en hulp bij foutmeldingen tijdens het programmeren. Ik heb DeepSeek gebruikt wanneer ik een concept niet goed snapte of een foutmelding kreeg die ik niet kon oplossen. De code is volledig door mijzelf geschreven op basis van de leerstof.
+
+Afbeeldingen van bezienswaardigheden zijn eigen foto's
+
+9. Wat ik geleerd heb
+Tijdens dit project heb ik geleerd hoe Laravel werkt in de praktijk. Ik begrijp nu beter hoe MVC werkt, hoe je routes maakt, hoe je controllers gebruikt en hoe je met Eloquent modellen werkt. Ook heb ik geleerd hoe je authenticatie en admin rechten opzet. Het moeilijkste vond ik de relaties tussen modellen en het werken met seeders.
+
