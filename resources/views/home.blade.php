@@ -13,34 +13,60 @@
 <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="text-center mb-10">
-            <h2 class="text-3xl font-bold text-gray-800">Wat te doen in Parijs?</h2>
+            <h2 class="text-3xl font-bold text-gray-800">Ontdek Parijs</h2>
             <p class="text-gray-600 mt-2">De meest populaire bezienswaardigheden</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1543349689-9a4d426bee8e?w=400" alt="Eiffeltoren" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-2">Eiffeltoren</h3>
-                    <p class="text-gray-600">Het symbool van Parijs. Beklim de 324 meter hoge toren voor een prachtig uitzicht over de stad.</p>
-                </div>
-            </div>
+            @php
+                $attractions = [
+                    [
+                        'name' => 'Eiffeltoren',
+                        'image' => 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400',
+                        'description' => 'Het symbool van Parijs. Beklim de 324 meter hoge toren voor een prachtig uitzicht over de stad.'
+                    ],
+                    [
+                        'name' => 'Louvre Museum',
+                        'image' => 'https://images.unsplash.com/photo-1564915322515-8b2cceb3c8b1?w=400',
+                        'description' => 'Het grootste museum ter wereld met duizenden kunstwerken, waaronder de Mona Lisa.'
+                    ],
+                    [
+                        'name' => 'Notre-Dame',
+                        'image' => 'https://images.unsplash.com/photo-1583583325395-9a017c155f79?w=400',
+                        'description' => 'De beroemde kathedraal op het Île de la Cité, een meesterwerk van gotische architectuur.'
+                    ],
+                    [
+                        'name' => 'Arc de Triomphe',
+                        'image' => 'https://images.unsplash.com/photo-1569087366556-63f5a765bbf3?w=400',
+                        'description' => 'De triomfboog ter ere van de Franse overwinningen. Beklim de top voor een panoramisch uitzicht.'
+                    ],
+                    [
+                        'name' => 'Sacré-Cœur',
+                        'image' => 'https://images.unsplash.com/photo-1572706629222-c0b0266f25e4?w=400',
+                        'description' => 'De witte basiliek op de Montmartre-heuvel met een prachtig uitzicht over de stad.'
+                    ],
+                    [
+                        'name' => 'Musée d\'Orsay',
+                        'image' => 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=400',
+                        'description' => 'Een museum in een voormalig treinstation met een indrukwekkende collectie impressionistische kunst.'
+                    ],
+                    [
+                        'name' => 'Centre Pompidou',
+                        'image' => 'https://images.unsplash.com/photo-1553949331-5d8f0a84de99?w=400',
+                        'description' => 'Een modern kunstmuseum met een opvallende architectuur van buitenaf, met kleurrijke leidingen.'
+                    ]
+                ];
+            @endphp
 
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1564915322515-8b2cceb3c8b1?w=400" alt="Louvre" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-2">Louvre Museum</h3>
-                    <p class="text-gray-600">Het grootste museum ter wereld met duizenden kunstwerken, waaronder de Mona Lisa.</p>
+            @foreach($attractions as $attraction)
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="{{ $attraction['image'] }}" alt="{{ $attraction['name'] }}" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">{{ $attraction['name'] }}</h3>
+                        <p class="text-gray-600">{{ $attraction['description'] }}</p>
+                    </div>
                 </div>
-            </div>
-
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1583583325395-9a017c155f79?w=400" alt="Notre-Dame" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-2">Notre-Dame</h3>
-                    <p class="text-gray-600">De beroemde kathedraal op het Île de la Cité, een meesterwerk van gotische architectuur.</p>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
