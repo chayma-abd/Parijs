@@ -23,5 +23,8 @@ Route::post('/news', [NewsController::class, 'store'])->name('news.store');
 Route::get('/news/{id}/edit', [NewsController::class, 'edit'])->name('news.edit');
 Route::put('/news/{id}', [NewsController::class, 'update'])->name('news.update');
 Route::delete('/news/{id}', [NewsController::class, 'destroy'])->name('news.destroy');
+Route::get('/admin/users', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.users');
+Route::post('/admin/make/{id}', [App\Http\Controllers\AdminController::class, 'makeAdmin'])->name('admin.make');
+Route::post('/admin/remove/{id}', [App\Http\Controllers\AdminController::class, 'removeAdmin'])->name('admin.remove');
 
 require __DIR__.'/auth.php';
