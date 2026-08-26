@@ -27,5 +27,6 @@ Route::get('/admin/users', [App\Http\Controllers\AdminController::class, 'index'
 Route::post('/admin/make/{id}', [App\Http\Controllers\AdminController::class, 'makeAdmin'])->name('admin.make');
 Route::post('/admin/remove/{id}', [App\Http\Controllers\AdminController::class, 'removeAdmin'])->name('admin.remove');
 Route::get('/faq', [App\Http\Controllers\FaqController::class, 'index'])->name('faq.index');
-
+Route::get('/contact', [App\Http\Controllers\ContactController::class, 'show'])->name('contact.show');
+Route::post('/contact', [App\Http\Controllers\ContactController::class, 'send'])->name('contact.send');
 require __DIR__.'/auth.php';
